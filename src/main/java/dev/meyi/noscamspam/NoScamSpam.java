@@ -1,7 +1,6 @@
 package dev.meyi.noscamspam;
 
 import com.google.gson.Gson;
-import com.ibm.icu.impl.BMPSet;
 import dev.meyi.noscamspam.commands.NoScamSpamCommand;
 import dev.meyi.noscamspam.events.NSSChatHandler;
 import dev.meyi.noscamspam.json.Config;
@@ -23,7 +22,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class NoScamSpam {
 
   public static final String MODID = "NoScamSpam";
-  public static final String VERSION = "0.1.0";
+  public static final String VERSION = "0.1.1";
   public static final Gson gson = new Gson();
   public static final String PREFIX =
       EnumChatFormatting.BLACK + "[" + EnumChatFormatting.RED + "NSS"
