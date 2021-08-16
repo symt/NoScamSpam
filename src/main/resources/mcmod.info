@@ -1,0 +1,16 @@
+[
+{
+  "modid": "NoScamSpam",
+  "name": "NoScamSpam",
+  "description": "Mod to hide party invites from potential spam bots.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["meyi"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
