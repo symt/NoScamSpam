@@ -119,8 +119,8 @@ public class NoScamSpamCommand extends CommandBase {
       } else if (args.length == 1 && args[0].equalsIgnoreCase("help")) {
         player.addChatMessage(new ChatComponentText(
             NoScamSpam.PREFIX + EnumChatFormatting.GREEN + "Help\n" + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
-                + " - " + EnumChatFormatting.GREEN + "bounds (skill|cata|network) (number)" + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
-                + " - " + EnumChatFormatting.GREEN + "whitelist (add|remove|reset) (username)" + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
+                + " - " + EnumChatFormatting.GREEN + "bounds (skill|cata|network) (number)" + "\n" + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
+                + " - " + EnumChatFormatting.GREEN + "whitelist (add|remove|reset) (username)" + "\n" + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
                 + " - " + EnumChatFormatting.GREEN + "api (key)"));
       } else {
         player.addChatMessage(new ChatComponentText(

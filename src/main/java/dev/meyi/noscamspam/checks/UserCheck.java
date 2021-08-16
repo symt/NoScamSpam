@@ -37,7 +37,9 @@ public class UserCheck {
                 > NoScamSpam.config.catacombsLevel) {
           return false;
         } else {
-          NoScamSpam.blacklist.add(username);
+          if (!NoScamSpam.blacklist.contains(username)) {
+            NoScamSpam.blacklist.add(username);
+          }
           return true;
         }
       }
