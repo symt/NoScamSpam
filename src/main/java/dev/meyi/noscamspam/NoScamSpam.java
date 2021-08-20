@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class NoScamSpam {
 
   public static final String MODID = "NoScamSpam";
-  public static final String VERSION = "0.1.1";
+  public static final String VERSION = "0.1.2";
   public static final Gson gson = new Gson();
   public static final String PREFIX =
       EnumChatFormatting.BLACK + "[" + EnumChatFormatting.RED + "NSS"
