@@ -12,6 +12,7 @@ public class Config {
   public int catacombsLevel;
 
   public List<String> whitelist;
+  public boolean showOnError = true;
 
   public Config() {
     apiKey = "";
