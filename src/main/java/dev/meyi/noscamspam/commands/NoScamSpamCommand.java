@@ -148,15 +148,27 @@ public class NoScamSpamCommand extends CommandBase {
               NoScamSpam.PREFIX + EnumChatFormatting.RED
                   + "Run /nss api (key) to set your api key. Do /api if you need to get your api key."));
         }
+      } else if (args.length == 1 && args[0].equalsIgnoreCase("error")) {
+        NoScamSpam.config.showOnError ^= true;
+        player.addChatMessage(new ChatComponentText(
+            NoScamSpam.PREFIX + (NoScamSpam.config.showOnError ? EnumChatFormatting.GREEN
+                : EnumChatFormatting.RED)
+                + "On API errors, the party invite will be " +
+                (NoScamSpam.config.showOnError ? EnumChatFormatting.DARK_GREEN
+                    + "" + EnumChatFormatting.BOLD + "SHOWN"
+                    : EnumChatFormatting.DARK_RED + "" + EnumChatFormatting.BOLD + "HIDDEN")
+        ));
       } else {
         player.addChatMessage(new ChatComponentText(
             NoScamSpam.PREFIX + EnumChatFormatting.GREEN + "Help\n" + EnumChatFormatting.DARK_GREEN
                 + EnumChatFormatting.BOLD
-                + " - " + EnumChatFormatting.GREEN + "bounds (skill|cata|network) (number)" + "\n"
+                + " - " + EnumChatFormatting.GREEN + "check (skill|cata|network) (number)" + "\n"
                 + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
                 + " - " + EnumChatFormatting.GREEN + "whitelist (add|remove|reset) (username)"
                 + "\n" + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
-                + " - " + EnumChatFormatting.GREEN + "api (key)"));
+                + " - " + EnumChatFormatting.GREEN + "api (key)"
+                + "\n" + EnumChatFormatting.DARK_GREEN + EnumChatFormatting.BOLD
+                + " - " + EnumChatFormatting.GREEN + "error"));
       }
     }
   }

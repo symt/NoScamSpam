@@ -47,6 +47,6 @@ public class UserCheck {
       e.printStackTrace();
     }
 
-    return false;
+    return !NoScamSpam.config.showOnError;
   }
 }
