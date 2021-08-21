@@ -125,13 +125,13 @@ public class NoScamSpamCommand extends CommandBase {
         }
       } else if (args.length >= 1 && args[0].equalsIgnoreCase("api")) {
         if (args.length == 2) {
-          NoScamSpam.config.apiKey = args[1];
+          NoScamSpam.config.apiKey = "";
           try {
             if (Utils.validateApiKey()) {
               player.addChatMessage(new ChatComponentText(
                   NoScamSpam.PREFIX + EnumChatFormatting.RED
                       + "Your api key has been set."));
-              NoScamSpam.config.apiKey = "";
+              NoScamSpam.config.apiKey = args[1];
             } else {
               player.addChatMessage(new ChatComponentText(
                   NoScamSpam.PREFIX + EnumChatFormatting.RED
