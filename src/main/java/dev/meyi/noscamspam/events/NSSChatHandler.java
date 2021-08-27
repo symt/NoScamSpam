@@ -34,9 +34,7 @@ public class NSSChatHandler {
     if (!NoScamSpam.config.apiKey.equals("")) {
       Matcher m = party.matcher(event.message.getUnformattedText());
       if (m.find()) {
-        if (UserCheck.shouldBlockUser(m.group(2).toLowerCase())) {
-          event.setCanceled(true);
-        }
+        UserCheck.shouldBlockUser(m.group(2).toLowerCase(), event);
       }
     }
   }
