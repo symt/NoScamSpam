@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.common.MinecraftForge;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -44,6 +45,8 @@ public class UserCheck {
                                     > NoScamSpam.config.catacombsLevel) {
                         Minecraft.getMinecraft().thePlayer.addChatMessage(event.message);
                         NoScamSpam.cachedAllowed.add(username);
+                        ClientChatReceivedEvent newEvent = new ClientChatReceivedEvent((byte) 0, event.message);
+                        MinecraftForge.EVENT_BUS.post(newEvent);
                     } else
                         NoScamSpam.blacklist.add(username);
                     Thread.currentThread().interrupt();
@@ -53,8 +56,11 @@ public class UserCheck {
                 e.printStackTrace();
             }
 
-            if (NoScamSpam.config.showOnError)
+            if (NoScamSpam.config.showOnError) {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(event.message);
+                ClientChatReceivedEvent newEvent = new ClientChatReceivedEvent((byte) 0, event.message);
+                MinecraftForge.EVENT_BUS.post(newEvent);
+            }
             Thread.currentThread().interrupt();
         });
         fetchThread.start();

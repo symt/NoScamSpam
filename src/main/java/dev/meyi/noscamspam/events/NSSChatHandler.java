@@ -17,6 +17,7 @@ import net.minecraft.event.ClickEvent.Action;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import org.apache.commons.io.IOUtils;
@@ -29,7 +30,7 @@ public class NSSChatHandler {
       "^-----------------------------\\n(\\[.*] )?(.*) has invited you to join their party!\\nYou have 60 seconds to accept. Click here to join!\\n-----------------------------$");
   boolean firstJoin = true;
 
-  @SubscribeEvent
+  @SubscribeEvent(priority = EventPriority.HIGHEST)
   public void onPartyMessage(ClientChatReceivedEvent event) {
     if (!NoScamSpam.config.apiKey.equals("")) {
       Matcher m = party.matcher(event.message.getUnformattedText());
