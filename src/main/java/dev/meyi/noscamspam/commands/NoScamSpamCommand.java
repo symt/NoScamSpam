@@ -60,6 +60,8 @@ public class NoScamSpamCommand extends CommandBase {
                   + EnumChatFormatting.DARK_GREEN + args[1].toLowerCase()
                   + EnumChatFormatting.GREEN + " has been set to " + EnumChatFormatting.DARK_GREEN
                   + args[2] + EnumChatFormatting.GREEN + "."));
+          NoScamSpam.cachedAllowed.clear();
+          NoScamSpam.blacklist.clear();
         } else if (args.length == 2 && args[1].equalsIgnoreCase("reset")) {
           NoScamSpam.config.reset();
           player.addChatMessage(new ChatComponentText(
