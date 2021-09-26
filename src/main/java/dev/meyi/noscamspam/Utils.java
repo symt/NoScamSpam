@@ -64,11 +64,11 @@ public class Utils {
     return (1250 * (level - 2) + 10000) * (level - 1);
   }
 
-  public static boolean validateApiKey() throws IOException {
+  public static boolean validateApiKey(String key) throws IOException {
     return NoScamSpam.gson.fromJson(new BufferedReader
         (new InputStreamReader(
             HttpClientBuilder.create().build().execute(new HttpGet(
-                "https://api.hypixel.net/key?key=" + NoScamSpam.config.apiKey)).getEntity()
+                "https://api.hypixel.net/key?key=" + key)).getEntity()
                 .getContent())), StatsResponse.class).success;
   }
 }

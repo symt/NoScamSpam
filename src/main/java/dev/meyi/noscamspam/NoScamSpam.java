@@ -31,6 +31,7 @@ public class NoScamSpam {
   public static Config config;
   public static boolean firstTime = false;
   public static List<String> blacklist = new ArrayList<>();
+  public static List<String> cachedAllowed = new ArrayList<>();
   private File configFile;
 
   @Mod.EventHandler

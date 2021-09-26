@@ -3,6 +3,19 @@ package dev.meyi.noscamspam.events;
 
 import dev.meyi.noscamspam.NoScamSpam;
 import dev.meyi.noscamspam.checks.UserCheck;
+import net.minecraft.client.Minecraft;
+import net.minecraft.event.ClickEvent;
+import net.minecraft.event.ClickEvent.Action;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.FMLNetworkEvent;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,17 +24,6 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import net.minecraft.client.Minecraft;
-import net.minecraft.event.ClickEvent;
-import net.minecraft.event.ClickEvent.Action;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.FMLNetworkEvent;
-import org.apache.commons.io.IOUtils;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
 
 public class NSSChatHandler {
 
@@ -29,14 +31,12 @@ public class NSSChatHandler {
       "^-----------------------------\\n(\\[.*] )?(.*) has invited you to join their party!\\nYou have 60 seconds to accept. Click here to join!\\n-----------------------------$");
   boolean firstJoin = true;
 
-  @SubscribeEvent
+  @SubscribeEvent(priority = EventPriority.HIGHEST)
   public void onPartyMessage(ClientChatReceivedEvent event) {
     if (!NoScamSpam.config.apiKey.equals("")) {
       Matcher m = party.matcher(event.message.getUnformattedText());
       if (m.find()) {
-        if (UserCheck.shouldBlockUser(m.group(2).toLowerCase())) {
-          event.setCanceled(true);
-        }
+        UserCheck.validateUser(m.group(2), event);
       }
     }
   }
